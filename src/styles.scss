@@ -1,1 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #242145;
+  color: whitesmoke;
+}
+
+button{
+  padding: 12px 30px;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+}
+.header-button{
+  background-color: #0047AB;
+  color: white;
+  margin-left: 20px;
+  width: 160px;
+}
+.home-container{
+  padding-top: 70px;
+  padding-left: 170px;
+  padding-bottom: 50px;
+  display: flex;
+}
+.admin-container{
+  background-color: white;
+}
+.admin-add-user{
+  height: 25%;
+  background-color: #28282B;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+input[type=text]{
+  width: 280px;
+  height: 40px;
+  padding: 10px 30px;
+  margin: 2px 1px;
+  border: none;
+}
+select{
+  width: 280px;
+  height: 40px;
+  padding: 10px 30px;
+  border: none;
+  margin: 2px 1px;
+}
+.admin-button{
+  margin: 8px 2px;
+  width: 563px;
+  background-color: #2ECC71;
+}
+.admin-user-list{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  background-color: white;
+}
+.admin-user-detail{
+  display: flex;
+  width: 70%;
+  margin: 5px auto;
+  padding: 15px 30px;
+  background-color: #28282B;
+  color: white;
+  border-bottom: #1D8348 3px solid;
+  font-size: 18px;
+  font-weight: lighter;
+}
+.admin-user-name{
+  width: 40%;
+}
+.admin-user-gender{
+  width: 20%;
+}
+.admin-user-subtype{
+  width: 20%;
+  border-left: #1D8348 3px solid;
+}
+.admin-user-active{
+  width: 20%;
+  border-left: #1D8348 3px solid;
+}
+.admin-user-show-detail-button{
+  padding: 2px 5px;
+  border: none;
+  background-color: #28282B;
+  color: yellow;
+  font-weight: bold;
+}
+.user-detail-container{
+  margin: 10px 50px;
+  width: 90%;
+  padding: 20px 150px;
+  display: flex;
+  border-top: #efefef 3px solid;
+}
+.user-detail-avatar-image{
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  margin: 20px auto;
+}
+.user-detail-info{
+  margin: 20px 50px;
+  padding: 30px 20px;
+}
+h2{
+  margin: 10px 0px;
+}
+p{
+  margin: 5px 0px;
+}
+
+
+div.card-header {
+ font-size: large;
+}
+
+div.card {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.table {
+  margin-top: 10px;
+}
+
+ 
