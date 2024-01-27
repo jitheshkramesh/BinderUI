@@ -1,19 +1,31 @@
-<div class="container">
-    <div class="card" style="width: 48rem;">
-        <img src="https://kaverisias.com/kv-app/uploads/2018/01/catalog-default-img.gif" class="card-img-top" 
-        alt="https://kaverisias.com/kv-app/uploads/2018/01/catalog-default-img.gif" width="250" height="250">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
+<div class="container mt-5">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="card" style="width: 48rem;"> 
+      <img [src]="productImage" class="card-img-top"  width="250" height="250">
+      <label class="image-upload-container btn btn-bwm">
+        <span>Select Image</span>
+        <input #imageInput type="file" accept="image/*" (change)="onchange($event)">
+      </label>
+      <div class="card-body">
+        <h5 class="card-title">Brand Name</h5>
+        <p class="card-text">
+          <input id="brandName" class="form-control" [formControl]="brandNameFormControl" required/>          
+        </p>
+        <div *ngIf="brandNameFormControl.errors?.['required']  && (brandNameFormControl.dirty || brandNameFormControl.touched)" class="errorlabel">Brand Name is required.</div>
       </div>
+      <div class="card-body">
+      <input type="submit" value="Submit" class="btn btn-sm btn-primary mt-4 m-1"/>
+      <input type="button" class="btn btn-sm btn-danger mt-4 m-1" (click)="resetForm()" value="Reset" />
+    </div>
+      <!-- <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div> -->
+    </div>
+  </form>
 </div>
