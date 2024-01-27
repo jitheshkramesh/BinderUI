@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BrandService } from '../service/brand.service';
-import { Subscription } from 'rxjs';
+import { BrandService, IBrand } from '../service/brand.service';
+import { Subscription } from 'rxjs'; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-brand-list',
@@ -8,14 +9,15 @@ import { Subscription } from 'rxjs';
   styleUrl: './brand-list.component.scss'
 })
 export class BrandListComponent implements OnInit, OnDestroy {
-  brands: any=[];
+  brands: IBrand[]=[];
   subscription: Subscription;
   errorMessage: string;
 
-  constructor(private service: BrandService) { }
+  constructor(private service: BrandService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.subscription = this.service.getBrands().subscribe((brandslist:any[]) => {
+    this.subscription = this.service.getBrands().subscribe((brandslist:IBrand[]) => {
       this.brands = brandslist;
       console.log(this.brands);
     },
@@ -23,6 +25,21 @@ export class BrandListComponent implements OnInit, OnDestroy {
         this.errorMessage = err.message + "Internal server issue";
       }
     );
+  }
+
+  delete(id: number) {
+    if(confirm("Are you sure to delete ")) { 
+      this.subscription = this.service.deleteBrand(id)
+        .subscribe({
+            next: data => {
+              this.toastr.error("Brand deleted successfully.");
+            },
+            error: error => {
+                this.errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        });
+    }
   }
 
   ngOnDestroy(): void {
