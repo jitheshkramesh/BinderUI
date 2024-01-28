@@ -2,15 +2,13 @@
     <div class="nav-container">
       <ul> 
         <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="'home'">Home</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'products'">Products</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'productlist'">ProductList</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'brandlist'">BrandList</a></li>
+        <li [routerLinkActive]="'active'"><a [routerLink]="'category'">Category</a></li>
         <li [routerLinkActive]="'active'"><a [routerLink]="'categorylist'">CategoryList</a></li>
         <li [routerLinkActive]="'active'"><a [routerLink]="'brand'">Brand</a></li> 
-        <li [routerLinkActive]="'active'"><a [routerLink]="'category'">Category</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'carts'">Carts</a></li>   
-        <li [routerLinkActive]="'active'"><a [routerLink]="'error'">Error</a></li>  
-        <li [routerLinkActive]="'active'"><a [routerLink]="'register'">Register</a></li>  
+        <li [routerLinkActive]="'active'"><a [routerLink]="'brandlist'">BrandList</a></li>
+        <li [routerLinkActive]="'active'"><a [routerLink]="'products'">Products</a></li>
+        <li [routerLinkActive]="'active'"><a [routerLink]="'productlist'">ProductList</a></li>
+        <li [routerLinkActive]="'active'"><a [routerLink]="'carts'">Carts</a></li>    
          <li [routerLinkActive]="'active'" (click)="login()" *ngIf="!userName"><a style="float: right;color: whitesmoke;">Login</a></li>
         <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="userName" style="float: right;color: whitesmoke;">
           {{userName}}

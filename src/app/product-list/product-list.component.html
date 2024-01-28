@@ -1,1 +1,31 @@
-<p>product-list works!</p>
+<div class="container mt-5">
+    <div class="card" style="width: 80rem;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product ImageUrl</th>
+                    <th scope="col">Brand Name</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of products?.result;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.productName}}</td>
+                    <td>
+                        <img [src]="'./assets/Uploads/Product/' + item.productImageUrl"
+                            [attr.alt]="item.productImageUrl" [attr.title]="item.productName" width="100" height="100">
+                    </td>
+                    <td>{{item.brand.brandName}}</td>
+                    <td>{{item.category.categoryName}}</td>
+                    <td>{{item.productPrice | number : '1.2-2'}}</td>
+                    <td><button class="btn btn-danger" (click)="delete(item.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

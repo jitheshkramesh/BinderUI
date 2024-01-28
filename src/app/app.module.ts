@@ -22,6 +22,7 @@ import { BrandListComponent } from "./brand-list/brand-list.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { authInterceptor } from "./interceptors/auth.interceptor";
 import { CategoryListComponent } from "./category-list/category-list.component";
+import { ProductListComponent } from "./product-list/product-list.component";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { CategoryListComponent } from "./category-list/category-list.component";
         CategoryComponent,
         CategoryListComponent,
         ProductsComponent,
+        ProductListComponent,
         CartlistComponent,
         ErrorComponent,
         LoginComponent,

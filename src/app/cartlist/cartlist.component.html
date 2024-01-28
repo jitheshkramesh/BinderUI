@@ -4,17 +4,25 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Brand Name</th>
                     <th scope="col">Category Name</th>
-                    <th scope="col">Category ImageUrl</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of categories.result;index as i">
-                    <th scope="row">{{i+1}}</th>
+                <tr *ngFor="let item of cart?.result;index as i">
+                    <th scope="row">{{i+1 }}</th>
+                    <td>{{item.productName}}</td>
                     <td>{{item.brandName}}</td>
-                    <td>{{item.brandImageUrl}}</td>
-                    <td>mdo</td>
+                    <td>{{item.categoryName}}</td>
+                    <td>{{item.count}}</td>
+                    <td>{{item.productPrice | number : '1.2-2'}}</td>
+                    <td>{{(item.count * item.productPrice) | number : '1.2-2'}}</td>
+                    <td><button class="btn btn-danger" (click)="delete(item.id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>

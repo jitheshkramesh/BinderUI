@@ -16,15 +16,19 @@ export class BrandListComponent implements OnInit, OnDestroy {
   constructor(private service: BrandService,
     private toastr: ToastrService) { }
 
+    getBrandList(){
+      this.subscription = this.service.getBrands().subscribe((brandslist:IBrand[]) => {
+        this.brands = brandslist;
+        console.log(this.brands);
+      },
+        (err) => {
+          this.errorMessage = err.message + "Internal server issue";
+        }
+      );
+    }
+
   ngOnInit(): void {
-    this.subscription = this.service.getBrands().subscribe((brandslist:IBrand[]) => {
-      this.brands = brandslist;
-      console.log(this.brands);
-    },
-      (err) => {
-        this.errorMessage = err.message + "Internal server issue";
-      }
-    );
+    this.getBrandList();
   }
 
   delete(id: number) {
@@ -33,6 +37,7 @@ export class BrandListComponent implements OnInit, OnDestroy {
         .subscribe({
             next: data => {
               this.toastr.error("Brand deleted successfully.");
+              this.getBrandList();
             },
             error: error => {
                 this.errorMessage = error.message;

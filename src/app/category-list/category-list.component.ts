@@ -16,15 +16,19 @@ export class CategoryListComponent {
   constructor(private service: CategoryService,
     private toastr: ToastrService) { }
 
+    getCategoryList(){
+      this.subscription = this.service.getCategories().subscribe((brandslist: ICategory[]) => {
+        this.categories = brandslist;
+        console.log(brandslist);
+      },
+        (err) => {
+          this.errorMessage = err.message + "Internal server issue";
+        }
+      );
+    }
+
   ngOnInit(): void {
-    this.subscription = this.service.getCategories().subscribe((brandslist: ICategory[]) => {
-      this.categories = brandslist;
-      console.log(brandslist);
-    },
-      (err) => {
-        this.errorMessage = err.message + "Internal server issue";
-      }
-    );
+    this.getCategoryList();
   }
 
   delete(id: number) {
@@ -33,6 +37,7 @@ export class CategoryListComponent {
         .subscribe({
             next: data => {
               this.toastr.error("Category deleted successfully.");
+              this.getCategoryList();
             },
             error: error => {
                 this.errorMessage = error.message;
