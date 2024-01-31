@@ -10,6 +10,8 @@
                     <th scope="col">Category Name</th>
                     <th scope="col">Price</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +25,9 @@
                     <td>{{item.brand.brandName}}</td>
                     <td>{{item.category.categoryName}}</td>
                     <td>{{item.productPrice | number : '1.2-2'}}</td>
+                    <td><button class="btn btn-secondary" (click)="edit(item.id)">Edit</button></td>
                     <td><button class="btn btn-danger" (click)="delete(item.id)">Delete</button></td>
+                    <td><button class="btn btn-primary" (click)="cartAdd(item.id)">Add To Cart</button></td>
                 </tr>
             </tbody>
         </table>

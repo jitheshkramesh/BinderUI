@@ -3,6 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BYPASS_LOG } from '../interceptors/auth.interceptor';
 
+export interface CartUpdate {
+  productId: number,
+  quantity: number
+}
+
 export interface CartServiceType {
   isSuccess?: boolean,
   statusVal?: string,
@@ -24,7 +29,7 @@ export class CartService {
   }
 
   postCart(inputData: any) {
-    return this.http.post(this.baseUrl, inputData);
+    return this.http.post(this.baseUrl + '/AddToCart', inputData);
   }
 
   deleteCart(inputData: number) {

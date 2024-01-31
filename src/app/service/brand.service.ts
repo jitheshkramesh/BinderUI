@@ -17,6 +17,13 @@ interface ServiceType {
   result?: Array<IBrand>
 }
 
+export interface ServiceTypeEdit {
+  isSuccess?: boolean,
+  statusVal?: string,
+  message?: string,
+  result?: IBrand
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +44,11 @@ export class BrandService {
       }))
     }));
   }
+
+  getBrand(id: number): Observable<ServiceTypeEdit> {
+    return this.http.get<ServiceTypeEdit>(this.baseUrl + '/' + id);
+  };
+
 
   postBrand(inputData: any) {
     return this.http.post(this.baseUrl, inputData);

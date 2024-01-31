@@ -7,25 +7,63 @@
           <input #imageInput type="file" accept="image/*" (change)="onchange($event)">
         </label>
         <div class="card-body">
-          <h5 class="card-title">Brand Name</h5>
+          <h5 class="card-title">Product Name</h5>
           <p class="card-text">
-            <input id="brandName" class="form-control" [formControl]="brandNameFormControl" required/>          
+            <input id="productName" class="form-control" formControlName="productName" required/>          
           </p>
-          <div *ngIf="brandNameFormControl.errors?.['required']  && (brandNameFormControl.dirty || brandNameFormControl.touched)" class="errorlabel">Brand Name is required.</div>
+          <div *ngIf="f.productName.errors?.['required']  && (f.productName.dirty || f.productName.touched)" class="errorlabel">Product Name is required.</div>
         </div>
+        <div class="card-body">
+          <h5 class="card-title">Product Description</h5>
+          <p class="card-text">
+            <input id="ProductDes" class="form-control" formControlName="productDescription" required/>          
+          </p>
+          <div *ngIf="f.productDescription.errors?.['required']  && (f.productDescription.dirty || f.productDescription.touched)" class="errorlabel">Product Description is required.</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Category</h5>
+          <p class="card-text">
+            <select (change)="onCategoryChange()"
+          class="custom-select mb-3" required
+          formControlName="categoryId">
+          <option value="" disabled>Choose Category</option>
+          <option *ngFor="let item of categories" [ngValue]="item.id">
+            {{ item.categoryName }}
+          </option>
+        </select>       
+          </p>           
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Brand</h5>
+          <p class="card-text">
+            <select (change)="onBrandChange()"
+          class="custom-select mb-3" required
+          formControlName="brandId">
+          <option value="" disabled>Choose Brand</option>
+          <option *ngFor="let item of brands" [ngValue]="item.id">
+            {{ item.brandName }}
+          </option>
+        </select>       
+          </p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Price</h5>
+          <p class="card-text">
+            <input id="productPrice" type="number" class="form-control" formControlName="productPrice" required/>          
+          </p>
+          <div *ngIf="f.productPrice.errors?.['required']  && (f.productPrice.dirty || f.productPrice.touched)" class="errorlabel">Product Name is required.</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Stock</h5>
+          <p class="card-text">
+            <input id="productStock" type="number" class="form-control" formControlName="productStock" required/>          
+          </p>
+          <div *ngIf="f.productStock.errors?.['required']  && (f.productStock.dirty || f.productStock.touched)" class="errorlabel">Product Name is required.</div>
+        </div> 
         <div class="card-body">
         <input type="submit" value="Submit" class="btn btn-sm btn-primary mt-4 m-1"/>
         <input type="button" class="btn btn-sm btn-danger mt-4 m-1" (click)="resetForm()" value="Reset" />
-      </div>
-        <!-- <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div> -->
+      </div> 
       </div>
     </form>
   </div>

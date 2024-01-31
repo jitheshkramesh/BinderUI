@@ -10,6 +10,13 @@ export interface ProductServiceType {
   result?: Array<any>
 }
 
+export interface ServiceTypeEdit {
+  isSuccess?: boolean,
+  statusVal?: string,
+  message?: string,
+  result?: any
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +30,10 @@ export class ProductService {
   getProducts(): Observable<ProductServiceType> {
     return this.http.get<ProductServiceType>(this.baseUrl);
   }
+
+  getProduct(id: number): Observable<ServiceTypeEdit> {
+    return this.http.get<ServiceTypeEdit>(this.baseUrl + '/' + id);
+  };
 
   postProduct(inputData: any) {
     return this.http.post(this.baseUrl, inputData);

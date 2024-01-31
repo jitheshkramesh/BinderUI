@@ -9,23 +9,14 @@
         <div class="card-body">
           <h5 class="card-title">Category Name</h5>
           <p class="card-text">
-            <input id="brandName" class="form-control" [formControl]="categoryNameFormControl" required/>          
+            <input name="CatName" class="form-control" formControlName="categoryName" required/>          
           </p>
-          <div *ngIf="categoryNameFormControl.errors?.['required']  && (categoryNameFormControl.dirty || categoryNameFormControl.touched)" class="errorlabel">Brand Name is required.</div>
+          <div *ngIf="f.categoryName.errors?.['required']  && (f.categoryName.dirty || f.categoryName.touched)" class="errorlabel">Brand Name is required.</div>
         </div>
         <div class="card-body">
         <input type="submit" value="Submit" class="btn btn-sm btn-primary mt-4 m-1"/>
         <input type="button" class="btn btn-sm btn-danger mt-4 m-1" (click)="resetForm()" value="Reset" />
-      </div>
-        <!-- <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div> -->
+      </div> 
       </div>
     </form>
   </div>

@@ -1,7 +1,7 @@
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BYPASS_LOG } from '../interceptors/auth.interceptor';
-import { Observable, map } from 'rxjs';
+import { Observable, map, pipe } from 'rxjs';
 
 export interface ICategory {
   id?: number,
@@ -10,11 +10,18 @@ export interface ICategory {
   categoryImageLocalPath?: string
 }
 
-interface ServiceType {
+export interface ServiceType {
   isSuccess?: boolean,
   statusVal?: string,
   message?: string,
   result?: Array<ICategory>
+}
+
+export interface ServiceTypeEdit {
+  isSuccess?: boolean,
+  statusVal?: string,
+  message?: string,
+  result?: ICategory
 }
 
 @Injectable({
@@ -22,7 +29,7 @@ interface ServiceType {
 })
 export class CategoryService {
   baseUrl = 'https://localhost:7105/api/Category';
-  imagePath = './assets/Uploads/Category/';
+ public imagePath = './assets/Uploads/Category/';
 
   constructor(private http: HttpClient) { }
 
@@ -30,12 +37,17 @@ export class CategoryService {
     return this.http.get<ServiceType>(this.baseUrl).pipe(map((cust: ServiceType) => {
       console.log(cust);
       return cust.result.map(cust => ({
-        id:cust.id,
+        id: cust.id,
         categoryName: cust.categoryName,
         categoryImageUrl: (cust.categoryImageLocalPath !== null) ? cust.categoryImageLocalPath : this.imagePath + cust.categoryImageUrl
       }))
     }));
   }
+
+  getCategory(id: number): Observable<ServiceTypeEdit> {
+    return this.http.get<ServiceTypeEdit>(this.baseUrl + '/' + id);
+  };
+
 
   postCategory(inputData: any) {
     return this.http.post(this.baseUrl, inputData);

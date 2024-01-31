@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService, ProductServiceType } from '../service/product.service';
 import { Subscription } from 'rxjs';
+import { CartService, CartUpdate } from '../service/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +16,8 @@ export class ProductListComponent {
   errorMessage: string;
 
   constructor(private service: ProductService,
+    private router: Router,
+    private cartService: CartService,
     private toastr: ToastrService) { }
 
   getProductList() {
@@ -45,6 +49,26 @@ export class ProductListComponent {
           }
         });
     }
+  }
+
+  cartAdd(id: number) {
+    const cartUpdate: CartUpdate = { productId: id, quantity: 1 };
+
+    this.subscription = this.cartService.postCart(cartUpdate)
+      .subscribe({
+        next: data => {
+          this.toastr.success("Cart added successfully.");
+          this.router.navigate(['/carts']);
+        },
+        error: error => {
+          this.errorMessage = error.message;
+          console.error('There was an error!', error);
+        }
+      });
+  }
+
+  edit(id: number) {
+    this.router.navigate(['/products/' + id]);
   }
 
   ngOnDestroy(): void {

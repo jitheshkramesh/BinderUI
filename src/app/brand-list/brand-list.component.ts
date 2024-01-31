@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BrandService, IBrand } from '../service/brand.service';
 import { Subscription } from 'rxjs'; 
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-brand-list',
@@ -14,7 +15,8 @@ export class BrandListComponent implements OnInit, OnDestroy {
   errorMessage: string;
 
   constructor(private service: BrandService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private router: Router) { }
 
     getBrandList(){
       this.subscription = this.service.getBrands().subscribe((brandslist:IBrand[]) => {
@@ -45,6 +47,10 @@ export class BrandListComponent implements OnInit, OnDestroy {
             }
         });
     }
+  }
+
+  edit(id: number) {
+    this.router.navigate(['/brand/' + id]);
   }
 
   ngOnDestroy(): void {

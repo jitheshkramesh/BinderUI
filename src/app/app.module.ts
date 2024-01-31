@@ -1,9 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { AppComponent } from "./app.component";
-import { BrandComponent } from "./brand/brand.component";
-import { CartlistComponent } from "./cartlist/cartlist.component";
-import { CategoryComponent } from "./category/category.component";
+import { AppComponent } from "./app.component"; 
+import { CartlistComponent } from "./cartlist/cartlist.component"; 
 import { ErrorComponent } from "./error/error.component";
 import { HomeComponent } from "./home/home.component";
 import { ProductsComponent } from "./products/products.component";
@@ -28,12 +26,9 @@ import { ProductListComponent } from "./product-list/product-list.component";
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
-        BrandComponent,
-        BrandListComponent,
-        CategoryComponent,
-        CategoryListComponent,
-        ProductsComponent,
+        HomeComponent, 
+        BrandListComponent, 
+        CategoryListComponent, 
         ProductListComponent,
         CartlistComponent,
         ErrorComponent,
