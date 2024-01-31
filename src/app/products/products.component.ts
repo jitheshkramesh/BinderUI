@@ -175,6 +175,7 @@ export class ProductsComponent {
   addProduct(prod: any) {
     this.service.postProduct(this.userForm.value).subscribe(data => {
       this.toastr.success("Product created successfully.");
+      this.router.navigate(['productlist']);
     }, err => {
       this.toastr.error("Error.");
     });
@@ -184,6 +185,7 @@ export class ProductsComponent {
     this.userForm.patchValue(prod);
     this.service.postProduct(prod).subscribe(data => {
       this.toastr.success("Product updated successfully.");
+      this.router.navigate(['productlist']);
     }, err => {
       this.toastr.error("Error.");
     });
@@ -208,5 +210,9 @@ export class ProductsComponent {
   }
 
   get f() { return this.userForm.controls; }
+
+  backToList(){
+    this.router.navigate(['productlist']);
+  }
 
 }

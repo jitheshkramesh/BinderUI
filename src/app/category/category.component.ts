@@ -110,6 +110,7 @@ export class CategoryComponent {
   addCategory(cat: ICategory) {
     this.service.postCategory(cat).subscribe(data => {
       this.toastr.success("Category created successfully.");
+      this.router.navigate(['categorylist']);
     }, err => {
       this.toastr.error("Error.");
     });
@@ -119,6 +120,7 @@ export class CategoryComponent {
     this.userForm.patchValue(cat);
     this.service.postCategory(cat).subscribe(data => {
       this.toastr.success("Category updated successfully.");
+      this.router.navigate(['categorylist']);
     }, err => {
       this.toastr.error("Error.");
     });
@@ -143,5 +145,9 @@ export class CategoryComponent {
   }
 
   get f() { return this.userForm.controls; }
+
+  backToList(){
+    this.router.navigate(['categorylist']);
+  }
 
 }

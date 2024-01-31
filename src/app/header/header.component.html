@@ -2,23 +2,23 @@
     <div class="nav-container">
       <ul> 
         <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="'home'">Home</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'category'">Category</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'categorylist'">CategoryList</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'brand'">Brand</a></li> 
-        <li [routerLinkActive]="'active'"><a [routerLink]="'brandlist'">BrandList</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'products'">Products</a></li>
-        <li [routerLinkActive]="'active'"><a [routerLink]="'productlist'">ProductList</a></li>
+        <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'category'">Category</a></li> -->
+        <li [routerLinkActive]="'active'"><a [routerLink]="'categorylist'">Category</a></li>
+        <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'brand'">Brand</a></li>  -->
+        <li [routerLinkActive]="'active'"><a [routerLink]="'brandlist'">Brand</a></li>
+        <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'products'">Products</a></li> -->
+        <li [routerLinkActive]="'active'"><a [routerLink]="'productlist'">Product</a></li>
         <li [routerLinkActive]="'active'"><a [routerLink]="'carts'">Carts</a></li>    
          <li [routerLinkActive]="'active'" (click)="login()" *ngIf="!userName"><a style="float: right;color: whitesmoke;">Login</a></li>
         <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="userName" style="float: right;color: whitesmoke;">
-          {{userName}}
+          {{userName}} <br/>Logout
         </li>
-        <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="userName">
+        <!-- <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="userName">
           <a style="float: right;color: whitesmoke;">Logout</a>
-        </li>
-        <li (click)="logout()" *ngIf="userName" style="float: right;color: whitesmoke;">
-          <!-- <a>{{message}}</a> -->
-        </li>
+        </li> -->
+        <!-- <li (click)="logout()" *ngIf="userName" style="float: right;color: whitesmoke;">
+          <!-- <a>{{message}}</a> -- >
+        </li> -->
   
         <!-- <button class="header-button" (click)="subscribe()">Subscribe</button> -->
   

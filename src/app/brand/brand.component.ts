@@ -48,8 +48,8 @@ export class BrandComponent implements OnInit, OnDestroy {
     this.isAddMode = !this.id;
 
     this.userForm = this.fb.group({
-      brandName: '',
-      brandImageUrl: ''
+      brandName: new FormControl('',Validators.required),
+      brandImageUrl: new FormControl('')
     });
 
     if (!this.isAddMode) {
@@ -108,6 +108,7 @@ export class BrandComponent implements OnInit, OnDestroy {
   addBrand(cat: IBrand) {
     this.service.postBrand(cat).subscribe(data => {
       this.toastr.success("Brand created successfully.");
+      this.router.navigate(['brandlist']);
     }, err => {
       this.toastr.error("Error.");
     });
@@ -117,6 +118,7 @@ export class BrandComponent implements OnInit, OnDestroy {
     this.userForm.patchValue(cat);
     this.service.postBrand(cat).subscribe(data => {
       this.toastr.success("Brand updated successfully.");
+      this.router.navigate(['brandlist']);
     }, err => {
       this.toastr.error("Error.");
     });
@@ -141,4 +143,8 @@ export class BrandComponent implements OnInit, OnDestroy {
   }
 
   get f() { return this.userForm.controls; }
+
+  backToList(){
+    this.router.navigate(['brandlist']);
+  }
 }

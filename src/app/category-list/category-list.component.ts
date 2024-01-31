@@ -56,4 +56,9 @@ export class CategoryListComponent {
   ngOnDestroy(): void {
     this.subscription && this.subscription.unsubscribe();
   }
+
+  addNew()
+  {
+    this.router.navigate(['/category/']);
+  }
 }

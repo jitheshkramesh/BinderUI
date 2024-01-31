@@ -74,4 +74,9 @@ export class ProductListComponent {
   ngOnDestroy(): void {
     this.subscription && this.subscription.unsubscribe();
   }
+
+  addNew()
+  {
+    this.router.navigate(['/products/']);
+  }
 }
